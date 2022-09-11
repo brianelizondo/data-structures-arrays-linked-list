@@ -141,9 +141,25 @@ class LinkedList{
     }
 
     /** removeAt(idx): return & remove item at idx, */
-
     removeAt(idx) {
-
+        if(idx === 0){
+            this.shift();
+        } else if(idx >= this.length){
+            throw "The index is invalid";
+        } else{
+            let currentNode = this.head;
+            let previousNode;
+            let idxPos = 0;
+            while(currentNode){
+                if(idx === idxPos){
+                    previousNode.next = currentNode.next;
+                    return currentNode.val;
+                }
+                idxPos++;
+                previousNode = currentNode;
+                currentNode = currentNode.next;
+            }
+        }
     }
 
     /** average(): return an average of all values in the list */
