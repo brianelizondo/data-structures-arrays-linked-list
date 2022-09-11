@@ -42,9 +42,26 @@ class LinkedList{
     }
 
     /** pop(): return & remove last item. */
-
     pop() {
-
+        if(this.head === null){
+            throw "The list is empty";
+        }else{
+            let currentNode = this.head;
+            let previousNode;
+            while(currentNode){
+                if(currentNode === this.tail){
+                    this.tail = previousNode;
+                    this.length--;
+                    if(this.length == 0){
+                        this.head = null;
+                        this.tail = null;
+                    }
+                    return currentNode.val;
+                }
+                previousNode = currentNode;
+                currentNode = currentNode.next;
+            }
+        }
     }
 
     /** shift(): return & remove first item. */
