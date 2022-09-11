@@ -163,9 +163,18 @@ class LinkedList{
     }
 
     /** average(): return an average of all values in the list */
-
     average() {
-
+        if(this.length > 0){
+            let currentNode = this.head;
+            let sumVals = 0;
+            while(currentNode){
+                sumVals += currentNode.val;
+                currentNode = currentNode.next;
+            }
+            return sumVals / this.length;
+        }else{
+            return 0;
+        }
     }
 }
 
