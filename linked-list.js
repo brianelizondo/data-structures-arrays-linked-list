@@ -1,76 +1,80 @@
 /** Node: node for a singly linked list. */
-
 class Node {
-  constructor(val) {
-    this.val = val;
-    this.next = null;
-  }
+    constructor(val) {
+        this.val = val;
+        this.next = null;
+    }
 }
 
+
 /** LinkedList: chained together nodes. */
+class LinkedList{
+    constructor(vals = []) {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
 
-class LinkedList {
-  constructor(vals = []) {
-    this.head = null;
-    this.tail = null;
-    this.length = 0;
+        for (let val of vals) this.push(val);
+    }
 
-    for (let val of vals) this.push(val);
-  }
+    /** push(val): add new value to end of list. */
+    push(val) {
+        let newNode = new Node(val);
 
-  /** push(val): add new value to end of list. */
+        if (this.head === null) this.head = newNode;
+        
+        if (this.tail !== null) this.tail.next = newNode;
+        this.tail = newNode;
 
-  push(val) {
+        this.length++;
+    }
 
-  }
+    /** unshift(val): add new value to start of list. */
+    unshift(val) {
+       
+    }
 
-  /** unshift(val): add new value to start of list. */
+    /** pop(): return & remove last item. */
 
-  unshift(val) {
+    pop() {
 
-  }
+    }
 
-  /** pop(): return & remove last item. */
+    /** shift(): return & remove first item. */
 
-  pop() {
+    shift() {
 
-  }
+    }
 
-  /** shift(): return & remove first item. */
+    /** getAt(idx): get val at idx. */
 
-  shift() {
+    getAt(idx) {
 
-  }
+    }
 
-  /** getAt(idx): get val at idx. */
+    /** setAt(idx, val): set val at idx to val */
 
-  getAt(idx) {
+    setAt(idx, val) {
 
-  }
+    }
 
-  /** setAt(idx, val): set val at idx to val */
+    /** insertAt(idx, val): add node w/val before idx. */
 
-  setAt(idx, val) {
+    insertAt(idx, val) {
 
-  }
+    }
 
-  /** insertAt(idx, val): add node w/val before idx. */
+    /** removeAt(idx): return & remove item at idx, */
 
-  insertAt(idx, val) {
+    removeAt(idx) {
 
-  }
+    }
 
-  /** removeAt(idx): return & remove item at idx, */
+    /** average(): return an average of all values in the list */
 
-  removeAt(idx) {
+    average() {
 
-  }
-
-  /** average(): return an average of all values in the list */
-
-  average() {
-    
-  }
+    }
 }
 
 module.exports = LinkedList;
