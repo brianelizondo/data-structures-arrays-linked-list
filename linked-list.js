@@ -115,9 +115,29 @@ class LinkedList{
     }
 
     /** insertAt(idx, val): add node w/val before idx. */
-
     insertAt(idx, val) {
-
+        if(this.head === null && idx === 0){
+            this.push(val);
+        } else if(idx >= this.length){
+            this.push(val);
+        } else if(idx < 0){
+            throw "The index is invalid";
+        } else {
+            let currentNode = this.head;
+            let previousNode;
+            let idxPos = 0;
+            while(currentNode){
+                if(idx === idxPos){
+                    let newNode = new Node(val);
+                    previousNode.next = newNode;
+                    newNode.next = currentNode;
+                    this.length++;
+                }
+                idxPos++;
+                previousNode = currentNode;
+                currentNode = currentNode.next;
+            }
+        }
     }
 
     /** removeAt(idx): return & remove item at idx, */
