@@ -98,9 +98,20 @@ class LinkedList{
     }
 
     /** setAt(idx, val): set val at idx to val */
-
     setAt(idx, val) {
-
+        if(idx < 0 || idx >= this.length){
+            throw "The index is invalid";
+        }
+         
+        let currentNode = this.head;
+        let idxPos = 0;
+        while(currentNode){
+            if(idx === idxPos){
+                currentNode.val = val;
+            }
+            idxPos++;
+            currentNode = currentNode.next;
+        }
     }
 
     /** insertAt(idx, val): add node w/val before idx. */
