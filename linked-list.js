@@ -65,9 +65,19 @@ class LinkedList{
     }
 
     /** shift(): return & remove first item. */
-
     shift() {
-
+        if(this.head === null){
+            throw "The list is empty";
+        }else{
+            let currentHead = this.head;
+            this.head = this.head.next;
+            this.length--;
+            if(this.length == 0){
+                this.head = null;
+                this.tail = null;
+            }
+            return currentHead.val;
+        }
     }
 
     /** getAt(idx): get val at idx. */
