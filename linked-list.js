@@ -81,9 +81,20 @@ class LinkedList{
     }
 
     /** getAt(idx): get val at idx. */
-
     getAt(idx) {
-
+        if(idx < 0 || idx >= this.length){
+            throw "The index is invalid";
+        }
+         
+        let currentNode = this.head;
+        let idxPos = 0;
+        while(currentNode){
+            if(idx === idxPos){
+                return currentNode.val;
+            }
+            idxPos++;
+            currentNode = currentNode.next;
+        }
     }
 
     /** setAt(idx, val): set val at idx to val */
