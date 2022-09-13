@@ -25,6 +25,66 @@ class LinkedList{
         this.tail = newNode;
         this.length++;
     }
+
+    /** shift(): return & remove first item. */
+    shift() {
+        if(this.head === null){
+            throw "The list is empty";
+        }else{
+            let currentHead = this.head;
+            this.head = this.head.next;
+            this.length--;
+            if(this.length == 0){
+                this.head = null;
+                this.tail = null;
+            }
+            return currentHead.val;
+        }
+    }
+
+    /** removeAt(idx): return & remove item at idx, */
+    removeAt(idx) {
+        if(idx === 0){
+            this.shift();
+        } else if(idx >= this.length){
+            throw "The index is invalid";
+        } else{
+            let currentNode = this.head;
+            let previousNode;
+            let idxPos = 0;
+            while(currentNode){
+                if(idx === idxPos){
+                    previousNode.next = currentNode.next;
+                    this.length--;
+                    return currentNode.val;
+                }
+                idxPos++;
+                previousNode = currentNode;
+                currentNode = currentNode.next;
+            }
+        }
+    }
+
+    /** pivot around value */
+    pivot(pivotValue){
+        let currentNode = this.head;
+        let count = this.length;
+
+        let currentIDX = 0;
+        while(currentNode && count > 0){
+            if(currentNode.val >= pivotValue){
+                let nextCurrentNode = currentNode.next;
+                this.removeAt(currentIDX);
+                this.push(currentNode.val);
+
+                currentNode = nextCurrentNode;
+            }else{
+                currentIDX++;
+                currentNode = currentNode.next;
+            }
+            count--;
+        }
+    }
 }
 
 /** new sorted linked list */
@@ -53,6 +113,5 @@ function sortedLists(listA, listB){
     
     return newList;
 }
-
 
 module.exports = {LinkedList, sortedLists};

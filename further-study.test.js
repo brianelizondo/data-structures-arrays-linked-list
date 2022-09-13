@@ -36,3 +36,25 @@ describe("sortedLists", function() {
       expect(newList.tail.val).toBe(11);
     });
 });
+
+describe("pivot", function() {
+    it("rearrange the items in the linked list, with a pivot number", function() {
+      let lst = new LinkedList([7, 6, 2, 3, 9, 1, 1])
+  
+      lst.pivot(5);
+      expect(lst.length).toBe(7);
+      expect(lst.head.val).toBe(2);
+      expect(lst.head.next.next.next.val).toBe(1);
+      expect(lst.head.next.next.next.next.val).toBe(7);
+      expect(lst.tail.val).toBe(9);
+
+      lst = new LinkedList([7, 6, 2, 5, 3, 5, 9, 1, 1]);
+      lst.pivot(5);
+      expect(lst.length).toBe(9);
+      expect(lst.head.val).toBe(2);
+      expect(lst.head.next.next.next.val).toBe(1);
+      expect(lst.head.next.next.next.next.val).toBe(7);
+      expect(lst.head.next.next.next.next.next.next.val).toBe(5);
+      expect(lst.tail.val).toBe(9);
+    });
+});
